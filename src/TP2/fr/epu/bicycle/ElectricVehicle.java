@@ -2,7 +2,7 @@ package TP2.fr.epu.bicycle;
 
 import java.util.Optional;
 
-public class ElectricVehicle extends TrackableVehicle implements Trackable{
+public class ElectricVehicle extends TrackableVehicle implements Trackable {
     /**
      * Le nombre de kilomètres parcourus par le vélo.
      */
@@ -65,7 +65,7 @@ public class ElectricVehicle extends TrackableVehicle implements Trackable{
      * @see Position
      */
     @Override
-    public Optional<Position> getPosition(){
+    public Optional<Position> getPosition() {
         return Optional.ofNullable(this.gps.getPosition());
     }
 

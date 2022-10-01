@@ -18,12 +18,12 @@ public class Station {
         return this.position;
     }
 
-    public void removeBikeFromStation(Bike bike){
+    public void removeBikeFromStation(Bike bike) {
         this.bikeArrayList.remove(bike);
         bike.setPosition(null);
     }
 
-    public void addBikeToStation(Bike bike){
+    public void addBikeToStation(Bike bike) {
         this.bikeArrayList.add(bike);
         bike.setPosition(this.position);
     }

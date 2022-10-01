@@ -1,0 +1,24 @@
+1. Avez-vous respecté le principe d'encapsulation ? Expliquez.
+
+Nous avons respecté le principe d'encapsulation car l'ensemble des attributs déclarés ont le bon niveau de visibilité
+dans notre cas : private, car ces champs ne sont accédés qu'à l'intérieur de chaque classe.
+Les méthodes ont également les bons niveaux de visibilités :
+    - Les getters sont bien publics afin de pouvoir être appelés dans toutes les autres classes.
+    - les autres méthodes ont également le bon niveau de visibilité correspondant à l'usage qu'on veut en faire.
+De plus, chaque classe ne possède en son sein que ce qui la concerne, il n'y a pas de mélange étrange.
+Par exemple, un vélo possède un GPS, une Batterie, etc, et pas l'inverse (Batterie qui possède un vélo...)
+
+2. Est-ce que SonarLint vous signale des "bad smells"?
+   Si vous en laissez, expliquez pourquoi. (_Je ne comprends pas_ n'est pas une réponse acceptable).
+
+Il reste surtout des avertissements mineurs à propos du nom du package dans lequel je travaille (majuscule en première lettre),
+mais ce n'est pas grave, ce n'est qu'une question de convention.
+Un autre avertissement qui m'est indiqué, "majeur" cette fois-ci, est le fait que la méthode "setKm" n'est pas utilisée.
+Je pourrai la supprimer puisqu'on ne l'utilise pas, mais la consigne demandait de la créer, alors je la laisse ainsi
+car ce n'est pas "si grave".
+
+
+QUESTIONS PERSONNELLES :
+
+Pourquoi Sonar considère une méthode inutilisée comme quelque chose de majeur à corriger ?
+(Je ne suis pas convaincu par l'explication qu'ils fournissent)

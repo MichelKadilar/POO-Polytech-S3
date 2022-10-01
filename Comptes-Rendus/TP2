@@ -1,0 +1,52 @@
+1. À quelle classe attribuez-vous la responsabilité de calculer la distance entre deux positions ? Pourquoi ?
+
+Dans la classe Position, afin d'avoir une bonne encapsulation et de ne pas avoir de couplage fort entre des choses sans
+vrai lien entre elles.
+On aurait pu choisir la classe GPS, car un GPS doit en théorie savoir calculer une distance, mais dans l'énoncé,
+il est spécifié que le GPS ne sait que donner sa propre position, il n'est donc pas en mesure de calculer une distance.
+Mais personnellement, j'aimerai bien définir une interface capable de calculer cela pour nous avec des méthodes statiques.
+
+2. Si vous gérez 1000 vélos, combien de fois la méthode distance est-elle appelée par la méthode around ?
+
+Pour 1 seul vélo étudié dit "courant" et 1000 vélos au total (celui-ci inclus), la méthode around sera appelée 1 fois,
+et la méthode distance sera appelée 999 fois (n-1 fois = 1000 - 1 fois = 999 fois) car on va comparer la distance entre
+le vélo courant et tous les autres vélos de la flotte.
+
+DES TROTINETTES :
+
+1. Si vous recopiez le code de la classe Ebike, que se passera-t-il si nous souhaitons modifier par exemple l’accès au GPS ?
+
+Nous devrons faire la modification à deux endroits, ce qui n'est pas pratique et deviendra difficilement maintenable dans le temps.
+
+Des Flottes de Trottinettes et EBike :
+
+1. Que devez-vous modifier ?
+
+On doit notamment modifier le type EBike que l'on gérait avant dans les arraylist afin de le faire devenir
+"ElectricVehicles", qui peuvent désigner soit un EBike, soit une trotinette, soit un unicycle.
+
+2. Quelles sont les fonctionnalités de Ebike et Scooter utilisées par la classe Fleet ?
+Que pourriez-vous faire pour que Fleet ne dépende pas d’une implémentation ?
+
+Je ne comprends pas bien le sens de la question.
+Je pense qu'on pourrait avoir une superclasse abstraite de EBikes et Scooter et redéfinir des comportements différents
+dans chaque sous classe.
+
+3. On ne vous demande pas d’intégrer les Unicycles dans les flottes.
+Mais pouvez-vous les ajouter et si oui à quel coût de développement ?
+
+Oui, on peut les ajouter, puisque EBikes, Scooter et Unicycle sont tous trois des ElectricVehicles,
+il suffirait de remplacer le type des arraylist de Fleet par des ElectricVehicles afin de pouvoir stocker
+tout type de véhicule et pouvoir repérer toutes sortes de véhicules également (et non plus seulement les EBikes et
+les Scooters).
+Ce n'est donc au final pas coûteux, car il suffit de remplacer un même type dans tout le fichier Fleet.
+
+
+QUESTIONS PERSONNELLES :
+
+Unicycle est un ElectricVehicle ?
+
+Je ne comprends pas l'histoire du bike et de la station.
+Comment faire pour que les ElectricVehicles et les bikes soient réunis dans une seule même arraylist sans avoir une
+classe qui représente les deux ? S'il faut avoir une classe, implémente-t-elle l'interface Trackable ?
+Je ne comprends pas bien l'organisation de bike et de station, ce n'est pas clair.

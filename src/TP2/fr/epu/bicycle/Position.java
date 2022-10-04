@@ -2,6 +2,7 @@ package TP2.fr.epu.bicycle;
 
 /**
  * Classe utilisée dans GPS, représentant la position indiquée par un GPS.
+ *
  * @author Michel K
  * @see GPS
  */
@@ -24,6 +25,7 @@ public class Position {
 
     /**
      * Constructeur de la classe Position, définissant les positions x et y.
+     *
      * @param x la position en abscisse
      * @param y la position en ordonnée
      */
@@ -34,13 +36,16 @@ public class Position {
 
     /**
      * Accesseur en lecture de la position en abscisse
+     *
      * @return x, la position en abscisse
      */
     public int getX() {
         return this.x;
     }
+
     /**
      * Accesseur en lecture de la position en ordonnée
+     *
      * @return y, la position en ordonnée
      */
     public int getY() {
@@ -48,14 +53,17 @@ public class Position {
     }
 
     /**
-     * Accesseur en écriture de la position en abscisse, permet de fixer la position en abscisse
+     * accesseur en écriture de la position en abscisse, permet de fixer la position en abscisse
+     *
      * @param x la position en abscisse à assigner.
      */
     public void setX(int x) {
         this.x = x;
     }
+
     /**
-     * Accesseur en écriture de la position en ordonnée, permet de fixer la position en ordonnée.
+     * accesseur en écriture de la position en ordonnée, permet de fixer la position en ordonnée.
+     *
      * @param y la position en ordonnée à assigner.
      */
     public void setY(int y) {
@@ -64,6 +72,7 @@ public class Position {
 
     /**
      * Permet de comparer deux positions et de savoir si vrai ou faux elles sont confondues (cf EPSILON).
+     *
      * @param position la position à comparer avec la position courante.
      * @return Vrai si les deux positions sont confondues. False sinon.
      */
@@ -73,7 +82,14 @@ public class Position {
         return xEquiv <= EPSILON && yEquiv <= EPSILON;
     }
 
-    public static double distanceBetweenTwoPositions(Position position, Position pos){
-        return Math.sqrt(Math.pow( (double) position.x - pos.x,2) + Math.pow( (double) position.y - pos.y,2));
+    /**
+     * Méthode statique permettant de calculer la distance entre deux points.
+     *
+     * @param position Le premier point
+     * @param pos      Le deuxième point
+     * @return la distance entre le premier point et le deuxième point
+     */
+    public static double distanceBetweenTwoPositions(Position position, Position pos) {
+        return Math.sqrt(Math.pow((double) position.x - pos.x, 2) + Math.pow((double) position.y - pos.y, 2));
     }
 }

@@ -2,7 +2,13 @@ package TP2.fr.epu.bicycle;
 
 import java.util.Optional;
 
-public class ElectricVehicle extends TrackableVehicle implements Trackable {
+/**
+ * Classe représentant les véhicules électriques; Ils sont tous traçables grâce à leur GPS et techniquement empruntables.
+ *
+ * @see Trackable
+ * @see Borrowable
+ */
+public abstract class ElectricVehicle implements Trackable {
     /**
      * Le nombre de kilomètres parcourus par le vélo.
      */
@@ -17,19 +23,24 @@ public class ElectricVehicle extends TrackableVehicle implements Trackable {
     protected GPS gps;
 
     /**
+     * Le véhicule est-il autorisé à l'emprunt ?
+     */
+    protected boolean isBorrowable;
+
+    /**
      * Constructeur de ElectricVehicle, définissant le nombre de kilomètres parcourus originellement par le vélo en sortie d'usine,
      * le GPS et la batterie utilisés dans ce vélo.
      *
      * @see GPS
      * @see Battery
      */
-    public ElectricVehicle() {
+    protected ElectricVehicle() {
         this.battery = new Battery(100, 48); // 100% de charge au départ et puissance de 48 Volts par exemple
         this.gps = new GPS();
     }
 
     /**
-     * Méthode permettant d'ajouter des kilomètres au compteur du vélo.
+     * Méthode permettant d'ajouter des kilomètres au compteur du vélo;
      * Si ce nombre est négatif, le kilomètrage ne change pas.
      *
      * @param kmToAdd nombre de kilomètres à ajouter au compteur du vélo. Ce nombre doit être positif.
@@ -50,7 +61,7 @@ public class ElectricVehicle extends TrackableVehicle implements Trackable {
     }
 
     /**
-     * Accesseur en écriture du nombre de kilomètres parcourus par le vélo.
+     * mutateur du nombre de kilomètres parcourus par le vélo.
      *
      * @param km le nombre de kilomètres parcourus à associer à ce vélo.
      */
@@ -77,4 +88,14 @@ public class ElectricVehicle extends TrackableVehicle implements Trackable {
     public int getEnergy() {
         return this.battery.getCharge();
     }
+
+    /**
+     * Accesseur en écriture de l'autorisation à l'emprunt.
+     *
+     * @param isBorrowable la nouvelle autorisation, vraie ou fausse.
+     */
+    public void setBorrowable(boolean isBorrowable) {
+        this.isBorrowable = isBorrowable;
+    }
+
 }

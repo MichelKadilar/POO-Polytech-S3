@@ -7,7 +7,7 @@ class ScooterTest {
 
     @org.junit.jupiter.api.Test
     void testAddKm() {
-        Scooter bike = new Scooter(scooterMaxSpeed);
+        Scooter bike = new Scooter(new Position(2, 2), scooterMaxSpeed);
         int value = -5;
         bike.addKm(value);
         assertEquals(0, bike.getKm());
@@ -15,7 +15,7 @@ class ScooterTest {
 
     @org.junit.jupiter.api.Test
     void testCreateScooter() {
-        Scooter bike = new Scooter(scooterMaxSpeed);
+        Scooter bike = new Scooter(new Position(2, 2),scooterMaxSpeed);
         assertEquals(scooterMaxSpeed, bike.getMaxSpeed());
     }
 

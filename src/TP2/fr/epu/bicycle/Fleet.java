@@ -18,13 +18,13 @@ public class Fleet {
     /**
      * La flotte de véhicules de taille inconnue
      */
-    private ArrayList<Trackable> fleet;
+    private ArrayList<Trackable> fleetOfVehicles;
 
     /**
      * Constructeur qui initialise la liste de la flotte de véhicules
      */
     public Fleet() {
-        this.fleet = new ArrayList<>();
+        this.fleetOfVehicles = new ArrayList<>();
     }
 
     /**
@@ -37,7 +37,7 @@ public class Fleet {
      */
     public List<Trackable> around(Position vehiclePosition, int distanceMax) {
         ArrayList<Trackable> vehiclesAround = new ArrayList<>();
-        for (Trackable tr : fleet) {
+        for (Trackable tr : fleetOfVehicles) {
             tr.getPosition().ifPresent(value -> {
                 if (Position.distanceBetweenTwoPositions(value, vehiclePosition) <= distanceMax &&
                         tr.isBorrowable()) {
@@ -54,7 +54,7 @@ public class Fleet {
      * @return la taille de la flotte.
      */
     public int getFleetSize() {
-        return fleet.size();
+        return fleetOfVehicles.size();
     }
 
     /**
@@ -68,18 +68,18 @@ public class Fleet {
         for (int i = 0; i < 5; i++) {
             bike = new Bike();
             station.addBikeToStation(bike);
-            this.fleet.add(bike);
+            this.fleetOfVehicles.add(bike);
             bike = new Bike();
             station1.addBikeToStation(bike);
-            this.fleet.add(bike);
+            this.fleetOfVehicles.add(bike);
             bike = new Bike();
             station2.addBikeToStation(bike);
-            this.fleet.add(bike);
+            this.fleetOfVehicles.add(bike);
         }
         for (int i = 0; i < 5; i++) {
-            this.fleet.add(new EBike(new Position(Math.toIntExact(Math.round(Math.random() * 10)), Math.toIntExact(Math.round(Math.random() * 10))), 20));
-            this.fleet.add(new Scooter(new Position(Math.toIntExact(Math.round(Math.random() * 10)), Math.toIntExact(Math.round(Math.random() * 10))), 120));
-            this.fleet.add(new Unicycle(new Position(Math.toIntExact(Math.round(Math.random() * 10)), Math.toIntExact(Math.round(Math.random() * 10)))));
+            this.fleetOfVehicles.add(new EBike(new Position(Math.toIntExact(Math.round(Math.random() * 10)), Math.toIntExact(Math.round(Math.random() * 10))), 20));
+            this.fleetOfVehicles.add(new Scooter(new Position(Math.toIntExact(Math.round(Math.random() * 10)), Math.toIntExact(Math.round(Math.random() * 10))), 120));
+            this.fleetOfVehicles.add(new Unicycle(new Position(Math.toIntExact(Math.round(Math.random() * 10)), Math.toIntExact(Math.round(Math.random() * 10)))));
         }
     }
 

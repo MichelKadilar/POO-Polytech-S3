@@ -10,7 +10,7 @@ public class FleetManager {
         for(VehicleTypes arg: args){
             if(arg == VehicleTypes.BIKE){
                 Fleet<Bike> bikeFleet = new FleetOfBike();
-                fleetOfTrackable.add()
+                //fleetOfTrackable.add();
             }
         }
     }

@@ -44,9 +44,4 @@ Ce n'est donc au final pas coûteux, car il suffit de remplacer un même type da
 
 QUESTIONS PERSONNELLES :
 
-Unicycle est un ElectricVehicle ? OUI.
-
-Je ne comprends pas l'histoire du bike et de la station.
-Comment faire pour que les ElectricVehicles et les bikes soient réunis dans une seule même arraylist sans avoir une
-classe qui représente les deux ? S'il faut avoir une classe, implémente-t-elle l'interface Trackable ?
-Je ne comprends pas bien l'organisation de bike et de station, ce n'est pas clair.
+Question 5 : Je comprends pas la question.

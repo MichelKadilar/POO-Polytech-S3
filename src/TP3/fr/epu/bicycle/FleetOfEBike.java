@@ -1,5 +1,9 @@
 package TP3.fr.epu.bicycle;
 
+import TP3.fr.epu.bicycle.exceptions.BatteryValueException;
+import TP3.fr.epu.bicycle.exceptions.KmValueException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +17,7 @@ import java.util.List;
  * @see Unicycle
  * @see Station
  */
-public class FleetOfEBike extends FleetOfTrackable<EBike> {
+public class FleetOfEBike extends Fleet<EBike> {
 
     /**
      * Constructeur qui initialise la liste de la flotte de véhicules
@@ -22,22 +26,23 @@ public class FleetOfEBike extends FleetOfTrackable<EBike> {
         super();
     }
 
-    /**
-     * Méthode permettant de renvoyer une liste de véhicules dont la position est proche à au plus "distanceMax" de
-     * la position du véhicule courant "vehiclePosition".
-     *
-     * @param vehiclePosition la position du véhicule courant, autour de laquelle on va chercher d'autres véhicules.
-     * @param distanceMax     la distance maximum à laquelle on va chercher des véhicules autour de la position courante.
-     * @return Une liste de véhicules traçables, qui sont les véhicules trouvés "autour" du véhicule courant.
-     */
-    public List<EBike> around(Position vehiclePosition, int distanceMax) {
-        return super.closeTo(vehiclePosition, distanceMax);
+    public List<EBike> EBikesWithMileageOver(int maxKm) throws KmValueException {
+        if (maxKm > 0) {
+            List<EBike> ebikesWithOverKm = new ArrayList<>();
+            for (EBike ebike : this.fleetOfVehicles) {
+                if (ebike.getKm() >= maxKm) {
+                    ebikesWithOverKm.add(ebike);
+                }
+            }
+            return ebikesWithOverKm;
+        } else throw new KmValueException("On ne peut pas avoir un kilométrage maximum négatif.");
     }
 
     /**
      * Méthode "fun" pour générer une flotte de test de manière très naïve, nulle et moche.
      */
-    public void generateFleet() {
+    @Override
+    public void generateFleet() throws BatteryValueException {
         for (int i = 0; i < 5; i++) {
             this.fleetOfVehicles.add(new EBike(
                     new Position(

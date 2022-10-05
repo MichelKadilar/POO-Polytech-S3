@@ -1,5 +1,7 @@
 package TP3.fr.epu.bicycle;
 
+import TP3.fr.epu.bicycle.exceptions.BatteryValueException;
+
 /**
  * Classe représentant un unicycle électrique
  * Il est traçable et a un concept d'emprunt
@@ -18,7 +20,7 @@ public class Unicycle extends ElectricVehicle {
      *
      * @param position la position courante de l'unicycle.
      */
-    public Unicycle(Position position) {
+    public Unicycle(Position position) throws BatteryValueException {
         super();
         this.gps.changePosition(position.getX(), position.getY());
         this.isBorrowable = false;

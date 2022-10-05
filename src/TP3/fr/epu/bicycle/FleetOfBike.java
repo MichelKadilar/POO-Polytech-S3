@@ -1,5 +1,8 @@
 package TP3.fr.epu.bicycle;
 
+import TP3.fr.epu.bicycle.exceptions.DistanceValueException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +16,19 @@ import java.util.List;
  * @see Unicycle
  * @see Station
  */
-public class FleetOfBike extends FleetOfTrackable<Bike> {
+
+/**
+ * Classe représentant une flotte de véhicules traçables.
+ *
+ * @author Michel K
+ * @see Trackable
+ * @see Bike
+ * @see EBike
+ * @see Scooter
+ * @see Unicycle
+ * @see Station
+ */
+public class FleetOfBike extends Fleet<Bike> {
 
     /**
      * Constructeur qui initialise la liste de la flotte de véhicules
@@ -21,6 +36,7 @@ public class FleetOfBike extends FleetOfTrackable<Bike> {
     public FleetOfBike() {
         super();
     }
+
 
     /**
      * Méthode permettant de renvoyer une liste de véhicules dont la position est proche à au plus "distanceMax" de
@@ -30,8 +46,19 @@ public class FleetOfBike extends FleetOfTrackable<Bike> {
      * @param distanceMax     la distance maximum à laquelle on va chercher des véhicules autour de la position courante.
      * @return Une liste de véhicules traçables, qui sont les véhicules trouvés "autour" du véhicule courant.
      */
-    public List<Bike> around(Position vehiclePosition, int distanceMax) {
-        return super.closeTo(vehiclePosition, distanceMax);
+    @Override
+    public List<Bike> around(Position vehiclePosition, int distanceMax) throws DistanceValueException {
+        if (distanceMax >= 0) {
+            ArrayList<Bike> vehiclesAround = new ArrayList<>();
+            for (Bike bike : this.fleetOfVehicles) {
+                bike.getPosition().ifPresent(value -> {
+                    if (Position.distanceBetweenTwoPositions(value, vehiclePosition) <= distanceMax) {
+                        vehiclesAround.add(bike);
+                    }
+                });
+            }
+            return vehiclesAround;
+        } else throw new DistanceValueException("La distance maximale est négative, ce qui n'est pas possible.");
     }
 
     /**

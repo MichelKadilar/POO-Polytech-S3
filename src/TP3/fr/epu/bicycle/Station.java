@@ -48,7 +48,11 @@ public class Station {
      * @param bike le velo emprunté qu'on enlève de la station.
      */
     public void removeBikeFromStation(Bike bike) {
-        this.bikeArrayList.remove(bike);
+        try {
+            this.bikeArrayList.remove(bike);
+        } catch (Exception e) {
+            System.err.println("Le vélo n'est pas pas présent dans l'arraylist et vous essayez de l'en enlever.");
+        }
         bike.setPosition(null);
     }
 

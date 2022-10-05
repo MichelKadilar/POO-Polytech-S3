@@ -2,4 +2,7 @@
 
 QUESTION PERSONNELLE :
 
-Il n'y a pas un problème pour le test de FleetOfTrackable ? On ne peut pas tester s'il y a des
+Il n'y a pas un problème pour le test de FleetOfTrackable ? On ne peut pas tester s'il y a des unicycle closeTo si
+on doit garder la condition d'emprunt car un unicycle n'est pas empruntable et donc n'est jamais ajouté
+à la liste des véhicules autour de nous (c'était une demande du TD2). J'ai alors pensé à rendre FleetOfTrackable abstraite,
+mais ça pose problème pour les tests fournis qui initialisent des FleetOfTrackable.

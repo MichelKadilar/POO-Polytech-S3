@@ -1,5 +1,7 @@
 package TP3.fr.epu.bicycle;
 
+import TP3.fr.epu.bicycle.exceptions.BatteryValueException;
+import TP3.fr.epu.bicycle.exceptions.DistanceValueException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +16,9 @@ class FleetOfTrackableTest {
     Unicycle u2 = new Unicycle(new Position(20, 15));
     Unicycle u3 = new Unicycle(new Position(13, 11));
     Unicycle u4 = new Unicycle(new Position(9, 9));
+
+    FleetOfTrackableTest() throws BatteryValueException {
+    }
 
     @BeforeEach
     void setUp() {
@@ -37,7 +42,7 @@ class FleetOfTrackableTest {
     }
 
     @Test
-    void closeToTest() {
+    void closeToTest() throws DistanceValueException {
         Position currentPosition = new Position(0, 0);
         List<Unicycle> list = fUC.closeTo(currentPosition, 15);
         assertTrue(list.contains(u1), getDistanceMessage(u1, currentPosition));

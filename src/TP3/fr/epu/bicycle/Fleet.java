@@ -1,5 +1,9 @@
 package TP3.fr.epu.bicycle;
 
+import TP3.fr.epu.bicycle.exceptions.BatteryValueException;
+import TP3.fr.epu.bicycle.exceptions.DistanceValueException;
+import TP3.fr.epu.bicycle.exceptions.SpeedValueException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,17 +18,14 @@ import java.util.List;
  * @see Unicycle
  * @see Station
  */
-public class Fleet {
-    /**
-     * La flotte de véhicules de taille inconnue
-     */
-    private ArrayList<Trackable> fleetOfVehicles;
+public class Fleet<T extends Trackable> extends FleetOfTrackable<T> {
+
 
     /**
      * Constructeur qui initialise la liste de la flotte de véhicules
      */
     public Fleet() {
-        this.fleetOfVehicles = new ArrayList<>();
+        super();
     }
 
     /**
@@ -35,9 +36,9 @@ public class Fleet {
      * @param distanceMax     la distance maximum à laquelle on va chercher des véhicules autour de la position courante.
      * @return Une liste de véhicules traçables, qui sont les véhicules trouvés "autour" du véhicule courant.
      */
-    public List<Trackable> around(Position vehiclePosition, int distanceMax) {
-        ArrayList<Trackable> vehiclesAround = new ArrayList<>();
-        for (Trackable tr : fleetOfVehicles) {
+    public List<T> around(Position vehiclePosition, int distanceMax) throws DistanceValueException {
+        ArrayList<T> vehiclesAround = new ArrayList<>();
+        for (T tr : fleetOfVehicles) {
             tr.getPosition().ifPresent(value -> {
                 if (Position.distanceBetweenTwoPositions(value, vehiclePosition) <= distanceMax &&
                         tr.isBorrowable()) {
@@ -48,19 +49,7 @@ public class Fleet {
         return vehiclesAround;
     }
 
-    /**
-     * Méthode permettant de renvoyer la taille de la liste de véhicules de la flotte.
-     *
-     * @return la taille de la flotte.
-     */
-    public int getFleetSize() {
-        return fleetOfVehicles.size();
-    }
-
-    /**
-     * Méthode "fun" pour générer une flotte de test de manière très naïve, nulle et moche.
-     */
-    public void generateFleet() {
+    public void generateFleet() throws BatteryValueException, SpeedValueException {
         Station station = new Station(new Position(5, 5));
         Station station1 = new Station(new Position(8, 8));
         Station station2 = new Station(new Position(4, 4));
@@ -68,18 +57,18 @@ public class Fleet {
         for (int i = 0; i < 5; i++) {
             bike = new Bike();
             station.addBikeToStation(bike);
-            this.fleetOfVehicles.add(bike);
+            this.addToAL((T) bike);
             bike = new Bike();
             station1.addBikeToStation(bike);
-            this.fleetOfVehicles.add(bike);
+            this.fleetOfVehicles.add((T) bike);
             bike = new Bike();
             station2.addBikeToStation(bike);
-            this.fleetOfVehicles.add(bike);
+            this.fleetOfVehicles.add((T) bike);
         }
         for (int i = 0; i < 5; i++) {
-            this.fleetOfVehicles.add(new EBike(new Position(Math.toIntExact(Math.round(Math.random() * 10)), Math.toIntExact(Math.round(Math.random() * 10))), 20));
-            this.fleetOfVehicles.add(new Scooter(new Position(Math.toIntExact(Math.round(Math.random() * 10)), Math.toIntExact(Math.round(Math.random() * 10))), 120));
-            this.fleetOfVehicles.add(new Unicycle(new Position(Math.toIntExact(Math.round(Math.random() * 10)), Math.toIntExact(Math.round(Math.random() * 10)))));
+            this.fleetOfVehicles.add((T) new EBike(new Position(Math.toIntExact(Math.round(Math.random() * 10)), Math.toIntExact(Math.round(Math.random() * 10))), 20));
+            this.fleetOfVehicles.add((T) new Scooter(new Position(Math.toIntExact(Math.round(Math.random() * 10)), Math.toIntExact(Math.round(Math.random() * 10))), 120));
+            this.fleetOfVehicles.add((T) new Unicycle(new Position(Math.toIntExact(Math.round(Math.random() * 10)), Math.toIntExact(Math.round(Math.random() * 10)))));
         }
     }
 

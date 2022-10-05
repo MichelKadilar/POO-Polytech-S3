@@ -1,5 +1,8 @@
 package TP3.fr.epu.bicycle;
 
+import TP3.fr.epu.bicycle.exceptions.BatteryValueException;
+import TP3.fr.epu.bicycle.exceptions.KmValueException;
+
 import java.util.Optional;
 
 /**
@@ -34,7 +37,7 @@ public abstract class ElectricVehicle implements Trackable {
      * @see GPS
      * @see Battery
      */
-    protected ElectricVehicle() {
+    protected ElectricVehicle() throws BatteryValueException {
         this.battery = new Battery(100, 48); // 100% de charge au départ et puissance de 48 Volts par exemple
         this.gps = new GPS();
     }
@@ -45,10 +48,10 @@ public abstract class ElectricVehicle implements Trackable {
      *
      * @param kmToAdd nombre de kilomètres à ajouter au compteur du vélo. Ce nombre doit être positif.
      */
-    public void addKm(int kmToAdd) { // Ou alors on peut lui mettre un unsigned
+    public void addKm(int kmToAdd) throws KmValueException {
         if (kmToAdd >= 0) {
             this.km += kmToAdd;
-        }
+        } else throw new KmValueException("L'ajout de kilométrage a un problème de valeur.");
     }
 
     /**
@@ -65,8 +68,10 @@ public abstract class ElectricVehicle implements Trackable {
      *
      * @param km le nombre de kilomètres parcourus à associer à ce vélo.
      */
-    private void setKm(int km) {
-        this.km = km;
+    private void setKm(int km) throws KmValueException {
+        if (km >= 0) {
+            this.km = km;
+        } else throw new KmValueException("Le kilométrage a un problème de valeur.");
     }
 
     /**

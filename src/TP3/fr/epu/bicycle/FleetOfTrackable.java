@@ -1,5 +1,7 @@
 package TP3.fr.epu.bicycle;
 
+import TP3.fr.epu.bicycle.exceptions.DistanceValueException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +29,10 @@ public class FleetOfTrackable<T extends Trackable> {
         this.fleetOfVehicles = new ArrayList<>();
     }
 
+    public void addToAL(T vehicle){
+        this.fleetOfVehicles.add(vehicle);
+    }
+
 
     public List<Position> getPositions() {
         List<Position> vehiclesPositionList = new ArrayList<>();
@@ -45,17 +51,19 @@ public class FleetOfTrackable<T extends Trackable> {
      * @param distanceMax     la distance maximum à laquelle on va chercher des véhicules autour de la position courante.
      * @return Une liste de véhicules traçables, qui sont les véhicules trouvés "autour" du véhicule courant.
      */
-     public List<T> closeTo(Position vehiclePosition, int distanceMax) {
-        ArrayList<T> vehiclesAround = new ArrayList<>();
-        for (T vehicle : fleetOfVehicles) {
-            vehicle.getPosition().ifPresent(value -> {
-                if (Position.distanceBetweenTwoPositions(value, vehiclePosition) <= distanceMax &&
-                        vehicle.isBorrowable()) {
-                    vehiclesAround.add(vehicle);
-                }
-            });
-        }
-        return vehiclesAround;
+     public List<T> closeTo(Position vehiclePosition, int distanceMax) throws DistanceValueException {
+         if(distanceMax < 0){
+             ArrayList<T> vehiclesAround = new ArrayList<>();
+             for (T vehicle : fleetOfVehicles) {
+                 vehicle.getPosition().ifPresent(value -> {
+                     if (Position.distanceBetweenTwoPositions(value, vehiclePosition) <= distanceMax) {
+                         vehiclesAround.add(vehicle);
+                     }
+                 });
+             }
+             return vehiclesAround;
+         }
+         else throw new DistanceValueException("La distance maximale est négative, ce qui n'est pas possible.");
     }
 
     /**

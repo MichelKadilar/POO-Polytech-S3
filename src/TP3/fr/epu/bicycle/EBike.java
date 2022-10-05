@@ -1,5 +1,7 @@
 package TP3.fr.epu.bicycle;
 
+import TP3.fr.epu.bicycle.exceptions.BatteryValueException;
+
 /**
  * Classe représentant un vélo, avec son nombre de kilomètres parcourus, son GPS et sa batterie;
  * Cette classe hérite de ElectricVehicle car un vélo électrique est un véhicule électrique.
@@ -31,11 +33,13 @@ public class EBike extends ElectricVehicle {
      * @see Battery
      * @see Position
      */
-    public EBike(Position position, int minChargeToBorrow) {
+    public EBike(Position position, int minChargeToBorrow) throws BatteryValueException {
         super();
         this.gps.changePosition(position.getX(), position.getY());
         this.km = INITIAL_DISTANCE;
-        this.minChargeToBorrow = minChargeToBorrow;
+        if (this.minChargeToBorrow > 0 && this.minChargeToBorrow <= 100) this.minChargeToBorrow = minChargeToBorrow;
+        else
+            throw new BatteryValueException("Problème dans la valeur de la charge minimale nécessaire pour emprunter un vélo électrique.");
         this.isBorrowable = true;
     }
 
@@ -64,8 +68,11 @@ public class EBike extends ElectricVehicle {
      *
      * @param minChargeToBorrow la nouvelle charge minimum nécessaire pour être emprunté.
      */
-    public void setMinChargeToBorrow(int minChargeToBorrow) {
-        this.minChargeToBorrow = minChargeToBorrow;
+    public void setMinChargeToBorrow(int minChargeToBorrow) throws BatteryValueException {
+        if (this.minChargeToBorrow > 0 && this.minChargeToBorrow <= 100) this.minChargeToBorrow = minChargeToBorrow;
+        else
+            throw new BatteryValueException("Problème dans la valeur de la charge minimale nécessaire pour emprunter un vélo électrique.");
+
     }
 
 

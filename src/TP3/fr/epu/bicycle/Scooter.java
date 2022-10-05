@@ -1,5 +1,8 @@
 package TP3.fr.epu.bicycle;
 
+import TP3.fr.epu.bicycle.exceptions.BatteryValueException;
+import TP3.fr.epu.bicycle.exceptions.SpeedValueException;
+
 /**
  * Classe représentant la trotinette électrique.
  *
@@ -25,10 +28,12 @@ public class Scooter extends ElectricVehicle {
      * @see GPS
      * @see Battery
      */
-    public Scooter(Position position, int maxSpeed) {
+    public Scooter(Position position, int maxSpeed) throws BatteryValueException, SpeedValueException {
         super();
+        if (maxSpeed >= 0) {
+            this.maxSpeed = maxSpeed;
+        } else throw new SpeedValueException("Une vitesse maximum ne peut pas être négative.");
         this.gps.changePosition(position.getX(), position.getY());
-        this.maxSpeed = maxSpeed;
         this.isBorrowable = true;
     }
 

@@ -19,7 +19,7 @@ public class MusicPlayerDemo {
             goOn = !command.equals("s");
             if (goOn) {
                 try {
-                    mp.playSample(System.getProperty("user.dir") + command);
+                    mp.playSample(System.getProperty("user.dir") + command, 500);
                 } catch (NonAvailableFileException e) {
                     System.out.println("The file cannot be listen : " + e);
 

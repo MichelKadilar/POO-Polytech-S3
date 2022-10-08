@@ -12,13 +12,13 @@ class MusicPlayerTest {
     void playSampleKnownTest() throws NonAvailableFileException {
         MusicPlayer mp = new MusicPlayer();
         //Not easy to test it in an automatic way !
-        mp.playSample(filename);
+        mp.playSample(filename, 500);
     }
     @Test
     void playSampleUnknownFileTest() {
         MusicPlayer mp = new MusicPlayer();
-        assertThrows(NonAvailableFileException.class, ()-> mp.playSample("unknown.mp3"));
-        assertThrows(NonAvailableFileException.class, ()-> mp.playSample("unknown"));
+        assertThrows(NonAvailableFileException.class, ()-> mp.playSample("unknown.mp3", 500));
+        assertThrows(NonAvailableFileException.class, ()-> mp.playSample("unknown", 500));
     }
 
     @Test

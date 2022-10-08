@@ -1,0 +1,6 @@
+playAndWait n'existe pas, ça doit être playSample ? En tout cas, le TP fonctionne avec playSample.
+
+for(int i=0; i<4;i++) {
+    organizer.jouerUnMorceauEnregistre(i);  Dans ce cas-là, on ne peut plus lancer le programme à cause du for
+                                                        -> player inexistant - Pourquoi ?
+ }

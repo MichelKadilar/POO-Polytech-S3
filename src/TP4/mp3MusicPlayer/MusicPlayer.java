@@ -34,10 +34,10 @@ public class MusicPlayer {
      *
      * @param filename The file to be played.
      */
-    public void playSample(String filename) throws NonAvailableFileException {
+    public void playSample(String filename, int dureeAJouerEnJeNeSaisPasQuelleUnite) throws NonAvailableFileException {
         try {
             setupPlayer(filename);
-            player.play(200);
+            player.play(dureeAJouerEnJeNeSaisPasQuelleUnite);
         } catch (JavaLayerException e) {
             reportProblem(filename, e);
             throw new NonAvailableFileException("Error playing Sample " + filename, e);
@@ -68,7 +68,7 @@ public class MusicPlayer {
                 }
             };
             playerThread.start();
-        } catch (Throwable e){
+        } catch (Throwable e) {
             throw new NonAvailableFileException("Error playing " + filename, e);
         }
     }
@@ -87,7 +87,7 @@ public class MusicPlayer {
         try {
             InputStream is = getInputStream(filename);
             player = new AdvancedPlayer(is, createAudioDevice());
-        } catch (IOException|JavaLayerException e) {
+        } catch (IOException | JavaLayerException e) {
             reportProblem(filename, e);
             killPlayer();
             throw new NonAvailableFileException(filename, e);
@@ -133,6 +133,7 @@ public class MusicPlayer {
     /**
      * Report a problem playing the given file.
      * We don't want to mix error messages with the code logic
+     *
      * @param filename The file being played.
      */
     private void reportProblem(String filename, Exception e) {

@@ -15,6 +15,9 @@ public class MusicOrganizerDemo {
         Scanner clavier = new Scanner(System.in);
         System.out.println("Entrez 0 pour interrompre le son :");
         int monEntier = clavier.nextInt();
-        if (monEntier == 0) organizer.stopperEcoutePiste();
+        while(monEntier != 0){
+            monEntier = clavier.nextInt();
+        }
+        organizer.stopperEcoutePiste();
     }
 }

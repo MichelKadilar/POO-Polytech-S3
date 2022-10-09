@@ -4,3 +4,6 @@ for(int i=0; i<4;i++) {
     organizer.jouerUnMorceauEnregistre(i);  Dans ce cas-là, on ne peut plus lancer le programme à cause du for
                                                         -> player inexistant - Pourquoi ?
  }
+
+ J'ai implementé deux moyens de trouver les pistes préférées dans un organizer, laquelle est la meilleure ?
+ (cf. les méthodes nommées "update")

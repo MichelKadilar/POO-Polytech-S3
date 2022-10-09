@@ -10,14 +10,11 @@ public class Piste {
 
     private int nombreEcoute;
 
-    private boolean preferee;
-
     public Piste(String nom, String nomArtiste) {
         this.nom = nom;
         this.reference = "/resources/audio/" + nomArtiste + "-" + nom + ".mp3";
         this.nomArtiste = nomArtiste;
         this.nombreEcoute = 0;
-        this.preferee = false;
     }
 
     public void ajouterUneEcoute() {
@@ -38,14 +35,6 @@ public class Piste {
 
     public int getNombreEcoute() {
         return this.nombreEcoute;
-    }
-
-    public boolean isPreferee() {
-        return preferee;
-    }
-
-    public void setPreferee(boolean preferee) {
-        this.preferee = preferee;
     }
 
 }

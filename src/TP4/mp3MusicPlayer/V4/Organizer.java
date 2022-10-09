@@ -2,9 +2,9 @@ package TP4.mp3MusicPlayer.V4;
 
 import TP4.mp3MusicPlayer.MusicPlayer;
 import TP4.mp3MusicPlayer.NonAvailableFileException;
-import TP4.mp3MusicPlayer.V3.exceptions.IndicePisteInvalideException;
-import TP4.mp3MusicPlayer.V3.exceptions.KeywordUnfoundInPisteName;
+import TP4.mp3MusicPlayer.V4.exceptions.IndicePisteInvalideException;
 import TP4.mp3MusicPlayer.V4.exceptions.KeywordUnfoundInArtistName;
+import TP4.mp3MusicPlayer.V4.exceptions.KeywordUnfoundInPisteName;
 
 import java.util.ArrayList;
 import java.util.Comparator;

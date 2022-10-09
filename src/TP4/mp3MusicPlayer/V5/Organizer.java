@@ -2,9 +2,9 @@ package TP4.mp3MusicPlayer.V5;
 
 import TP4.mp3MusicPlayer.MusicPlayer;
 import TP4.mp3MusicPlayer.NonAvailableFileException;
-import TP4.mp3MusicPlayer.V3.exceptions.IndicePisteInvalideException;
-import TP4.mp3MusicPlayer.V3.exceptions.KeywordUnfoundInPisteName;
-import TP4.mp3MusicPlayer.V4.exceptions.KeywordUnfoundInArtistName;
+import TP4.mp3MusicPlayer.V5.exceptions.IndicePisteInvalideException;
+import TP4.mp3MusicPlayer.V5.exceptions.KeywordUnfoundInArtistName;
+import TP4.mp3MusicPlayer.V5.exceptions.KeywordUnfoundInPisteName;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -41,6 +41,7 @@ public class Organizer {
         piste.ajouterUneEcoute();
         musicPlayer.playSample(System.getProperty("user.dir") + piste.getReference(), 10);
         updatePreferee();
+        updatePreferee2();
     }
 
     public void stopperEcoutePiste() {
@@ -95,6 +96,7 @@ public class Organizer {
             }
         }
         updatePreferee();
+        updatePreferee2();
     }
 
     private List<Piste> updatePreferee() {
@@ -116,6 +118,25 @@ public class Organizer {
             if (piste.getNombreEcoute() > valeurMediane) this.pistePrefereeList.add(piste);
         }
         return this.pistePrefereeList; // ça ne coute rien de le renvoyer même si ça ne sert à rien je pense.
+    }
+
+    private void updatePreferee2() {
+        int tailleListePistes = this.pisteList.size();
+        List<Piste> listePisteTrieeParEcoute = Organizer.trierParNombreEcoutePiste(this.pisteList);
+        float valeurMediane;
+        if (tailleListePistes % 2 == 0) {
+            int premierePositionMediane = (int) Math.floor((float) tailleListePistes / 2) - 1;
+            int deuxiemePositionMediane = premierePositionMediane + 1;
+            int mediane1 = listePisteTrieeParEcoute.get(premierePositionMediane).getNombreEcoute();
+            int mediane2 = listePisteTrieeParEcoute.get(deuxiemePositionMediane).getNombreEcoute();
+            valeurMediane = (float) (mediane1 + mediane2) / 2;
+        } else {
+            int positionMediane = (int) Math.floor((float) (tailleListePistes) / 2) + 1 - 1;
+            valeurMediane = listePisteTrieeParEcoute.get(positionMediane).getNombreEcoute();
+        }
+        for (Piste piste : listePisteTrieeParEcoute) {
+            piste.setPreferee(piste.getNombreEcoute() > valeurMediane);
+        }
     }
 
     protected static List<Piste> trierParNomArtistePiste(List<Piste> pisteList) {
@@ -146,5 +167,15 @@ public class Organizer {
 
     public List<Piste> getPistePrefereeList() {
         return this.pistePrefereeList;
+    }
+
+    public List<Piste> getPistePrefereeListFromPrefereeField() {
+        List<Piste> pistesPreferees = new ArrayList<>();
+        for (Piste piste : this.getPisteList()) {
+            if (piste.isPreferee()) {
+                pistesPreferees.add(piste);
+            }
+        }
+        return pistesPreferees;
     }
 }

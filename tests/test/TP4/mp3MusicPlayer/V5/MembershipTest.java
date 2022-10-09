@@ -1,12 +1,9 @@
 package TP4.mp3MusicPlayer.V5;
 
 import TP4.mp3MusicPlayer.NonAvailableFileException;
-import TP4.mp3MusicPlayer.V3.exceptions.KeywordUnfoundInPisteName;
 import TP4.mp3MusicPlayer.V5.exceptions.IndicePisteInvalideException;
 import TP4.mp3MusicPlayer.V5.exceptions.IsNotMemberException;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

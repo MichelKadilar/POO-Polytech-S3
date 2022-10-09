@@ -2,7 +2,7 @@ package TP1.fr.epu.bicycle;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BatteryTest {
 

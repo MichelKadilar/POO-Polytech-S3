@@ -2,7 +2,7 @@ package TP4.mp3MusicPlayer;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MusicPlayerTest {
 

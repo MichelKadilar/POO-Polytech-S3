@@ -3,7 +3,7 @@ package TP4.mp3MusicPlayer.V2;
 import TP4.mp3MusicPlayer.V2.exceptions.IndicePisteInvalideException;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class OrganizerTest {
 

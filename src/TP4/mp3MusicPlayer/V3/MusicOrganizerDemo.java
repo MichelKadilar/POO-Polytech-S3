@@ -1,6 +1,5 @@
 package TP4.mp3MusicPlayer.V3;
 
-import TP4.mp3MusicPlayer.MusicPlayer;
 import TP4.mp3MusicPlayer.NonAvailableFileException;
 
 public class MusicOrganizerDemo {

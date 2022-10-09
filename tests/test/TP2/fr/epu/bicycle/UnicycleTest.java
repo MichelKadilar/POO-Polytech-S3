@@ -1,6 +1,6 @@
 package TP2.fr.epu.bicycle;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UnicycleTest {
 

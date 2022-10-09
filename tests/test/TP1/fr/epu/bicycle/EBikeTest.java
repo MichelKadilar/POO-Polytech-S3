@@ -1,6 +1,6 @@
 package TP1.fr.epu.bicycle;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EBikeTest {
 

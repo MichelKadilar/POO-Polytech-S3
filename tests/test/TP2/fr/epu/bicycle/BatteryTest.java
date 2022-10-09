@@ -1,6 +1,5 @@
 package TP2.fr.epu.bicycle;
 
-import TP2.fr.epu.bicycle.Battery;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

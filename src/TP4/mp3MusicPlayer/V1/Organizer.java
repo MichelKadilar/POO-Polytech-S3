@@ -6,6 +6,8 @@ import TP4.mp3MusicPlayer.NonAvailableFileException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static TP4.mp3MusicPlayer.MusicPlayerDemo.USER_DIR;
+
 public class Organizer {
 
     private MusicPlayer musicPlayer;
@@ -30,7 +32,7 @@ public class Organizer {
     }
 
     public void ecouterPiste(Piste piste) throws NonAvailableFileException {
-        musicPlayer.startPlaying(System.getProperty("user.dir") + piste.getReference());
+        musicPlayer.startPlaying(USER_DIR + piste.getReference());
     }
 
     public void stopperEcoutePiste() {

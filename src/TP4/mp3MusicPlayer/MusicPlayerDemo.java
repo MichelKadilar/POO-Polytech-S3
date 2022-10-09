@@ -7,15 +7,18 @@ import java.util.Scanner;
  */
 public class MusicPlayerDemo {
 
+    private static final String USER_DIR_STRING = "user_dir";
+    public static final String USER_DIR = System.getProperty(USER_DIR_STRING);
+
     public static void main(String[] args) {
         MusicPlayer mp = new MusicPlayer();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Placez vos fichiers audio sous : " + System.getProperty("user.dir"));
+        System.out.println("Placez vos fichiers audio sous : " + USER_DIR);
         boolean goOn = true;
 
 
         while (goOn) {
-            String command = getCommand("What file do you want to listen to (to stop type 's')?",sc);
+            String command = getCommand("What file do you want to listen to (to stop type 's')?", sc);
             goOn = !command.equals("s");
             if (goOn) {
                 try {
@@ -31,7 +34,7 @@ public class MusicPlayerDemo {
 
         assert !goOn;
 
-        String command = getCommand("What file do you want to listen to for a long time (to stop type 's')?",sc);
+        String command = getCommand("What file do you want to listen to for a long time (to stop type 's')?", sc);
         goOn = !command.equals("s");
         while (goOn) {
             try {

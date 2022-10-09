@@ -11,6 +11,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
+import static TP4.mp3MusicPlayer.MusicPlayerDemo.USER_DIR;
+
 public class Organizer {
 
     private MusicPlayer musicPlayer;
@@ -39,7 +41,7 @@ public class Organizer {
     private void ecouterPiste(Piste piste) throws NonAvailableFileException {
         this.stopperEcoutePiste();
         piste.ajouterUneEcoute();
-        musicPlayer.playSample(System.getProperty("user.dir") + piste.getReference(), 10);
+        musicPlayer.playSample(USER_DIR + piste.getReference(), 10);
         updatePreferee();
     }
 
@@ -90,7 +92,7 @@ public class Organizer {
     public void lireToutesPistesMemeArtiste(String nomArtiste) throws NonAvailableFileException {
         for (Piste piste : pisteList) {
             if (piste.getNomArtiste().equals(nomArtiste)) {
-                musicPlayer.playSample(System.getProperty("user.dir") + piste.getReference(), 500);
+                musicPlayer.playSample(USER_DIR + piste.getReference(), 500);
                 piste.ajouterUneEcoute();
             }
         }

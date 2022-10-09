@@ -8,6 +8,8 @@ import TP4.mp3MusicPlayer.V3.exceptions.KeywordUnfoundInPisteName;
 import java.util.ArrayList;
 import java.util.List;
 
+import static TP4.mp3MusicPlayer.MusicPlayerDemo.USER_DIR;
+
 public class Organizer {
 
     private MusicPlayer musicPlayer;
@@ -32,7 +34,7 @@ public class Organizer {
     }
 
     private void ecouterPiste(Piste piste) throws NonAvailableFileException {
-        musicPlayer.startPlaying(System.getProperty("user.dir") + piste.getReference());
+        musicPlayer.startPlaying(USER_DIR + piste.getReference());
     }
 
     public void stopperEcoutePiste() {
@@ -65,7 +67,7 @@ public class Organizer {
     public void lireToutesPistesMemeArtiste(String nomArtiste) throws NonAvailableFileException {
         for (Piste piste : pisteList) {
             if (piste.getNomArtiste().equals(nomArtiste)) {
-                musicPlayer.playSample(System.getProperty("user.dir") + piste.getReference(), 500);
+                musicPlayer.playSample(USER_DIR + piste.getReference(), 500);
             }
         }
     }

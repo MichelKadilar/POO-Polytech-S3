@@ -2,11 +2,12 @@ package TP4.mp3MusicPlayer;
 
 import org.junit.jupiter.api.Test;
 
+import static TP4.mp3MusicPlayer.MusicPlayerDemo.USER_DIR;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MusicPlayerTest {
 
-    final String filename = System.getProperty("user.dir") + "/resources/audio/" + "BigBillBroonzy-BabyPleaseDontGo1.mp3";
+    final String filename = USER_DIR + "/resources/audio/" + "BigBillBroonzy-BabyPleaseDontGo1.mp3";
 
     @Test
     void playSampleKnownTest() throws NonAvailableFileException {

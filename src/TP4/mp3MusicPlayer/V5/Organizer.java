@@ -41,7 +41,7 @@ public class Organizer {
     private void ecouterPiste(Piste piste) throws NonAvailableFileException {
         this.stopperEcoutePiste();
         piste.ajouterUneEcoute();
-        musicPlayer.playSample(USER_DIR + piste.getReference(), 10);
+        musicPlayer.playSample(System.getProperty("user.dir") + piste.getReference(), 10);
         updatePreferee();
         updatePreferee2();
     }

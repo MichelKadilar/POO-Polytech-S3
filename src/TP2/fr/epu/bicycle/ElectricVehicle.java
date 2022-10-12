@@ -12,7 +12,7 @@ public abstract class ElectricVehicle implements Trackable {
     /**
      * Le nombre de kilomètres parcourus par le vélo.
      */
-    protected int km;
+    protected double km;
     /**
      * La batterie associée à ce vélo.
      */
@@ -45,9 +45,15 @@ public abstract class ElectricVehicle implements Trackable {
      *
      * @param kmToAdd nombre de kilomètres à ajouter au compteur du vélo. Ce nombre doit être positif.
      */
-    public void addKm(int kmToAdd) { // Ou alors on peut lui mettre un unsigned
+    public void addKm(double kmToAdd) { // Ou alors on peut lui mettre un unsigned
         if (kmToAdd >= 0) {
             this.km += kmToAdd;
+        }
+    }
+
+    public void addMilesAsKm(double milesToAdd) { // Ou alors on peut lui mettre un unsigned
+        if (milesToAdd >= 0) {
+            this.km += milesToAdd * 1.609;
         }
     }
 
@@ -56,8 +62,12 @@ public abstract class ElectricVehicle implements Trackable {
      *
      * @return le kilomètrage du vélo.
      */
-    public int getKm() {
+    public double getKm() {
         return this.km;
+    }
+
+    public double getMiles() {
+        return this.getKm() / 1.609;
     }
 
     /**
@@ -65,7 +75,7 @@ public abstract class ElectricVehicle implements Trackable {
      *
      * @param km le nombre de kilomètres parcourus à associer à ce vélo.
      */
-    private void setKm(int km) {
+    private void setKm(double km) {
         this.km = km;
     }
 

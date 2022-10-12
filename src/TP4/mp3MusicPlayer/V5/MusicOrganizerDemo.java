@@ -1,8 +1,11 @@
 package TP4.mp3MusicPlayer.V5;
 
+import TP4.mp3MusicPlayer.NonAvailableFileException;
+import TP4.mp3MusicPlayer.V5.exceptions.IndicePisteInvalideException;
+
 public class MusicOrganizerDemo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NonAvailableFileException, IndicePisteInvalideException {
         Organizer organizer = new Organizer();
         Piste piste = new Piste("BabyPleaseDontGo1", "BigBillBroonzy");
         Piste piste2 = new Piste("matchBoxBlues", "BlindLemonJefferson");
@@ -12,10 +15,10 @@ public class MusicOrganizerDemo {
         organizer.getPisteList().add(piste2);
         organizer.getPisteList().add(piste3);
         organizer.getPisteList().add(piste4);
-        /*
+
         for(int i=0; i<4;i++) {
             organizer.jouerUnMorceauEnregistre(0);
-        }
+        } /*
         System.out.println(piste.getNombreEcoute());
         System.out.println(organizer.pistePrefereeList.size());
         System.out.println(organizer.pisteList.get(0).getNom() + ":" + organizer.pisteList.get(0).getNombreEcoute());
